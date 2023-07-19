@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -19,7 +20,7 @@ import static gov.miloverada.telegram_bot.controllers.ControllerUtils.createOneR
 
 @Component
 @Controller
-public class AllCommandsAbsController extends AbsController {
+public class AllCommandsController extends AbsController {
 
     private static final Logger logger = LogManager.getLogger(UpdateReceiver.class);
 
@@ -62,15 +63,17 @@ public class AllCommandsAbsController extends AbsController {
                     "   • Записатися в електронну чергу \n" +
                     "   • Переглянути деталі записів \n" +
                     "Оберіть дію ⬇";
-            bot.execute(SendMessage.builder()
+            Message msg = bot.execute(SendMessage.builder()
                     .chatId(updateDetails.getChatId())
                     .text(text)
                     .replyMarkup(new InlineKeyboardMarkup(List.of(
-                                    createOneRowBtn("Записатися в чергу", "makeRecord"),
+                                    createOneRowBtn("Послуги", "showServices"),
                                     createOneRowBtn("Переглянути деталі запису", "showRecordDetails")
                     )))
                     .parseMode(ParseMode.HTML)
                     .build());
+
+            cash().setLastMessage(msg);
 
         } catch (TelegramApiException e) {
             logger.info(e.getMessage());

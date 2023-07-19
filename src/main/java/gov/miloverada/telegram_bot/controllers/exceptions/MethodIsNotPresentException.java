@@ -1,4 +1,4 @@
-package gov.miloverada.telegram_bot.exceptions;
+package gov.miloverada.telegram_bot.controllers.exceptions;
 
 public class MethodIsNotPresentException extends CommandMethodExecutionException {
 

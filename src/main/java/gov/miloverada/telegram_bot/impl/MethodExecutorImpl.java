@@ -1,9 +1,6 @@
 package gov.miloverada.telegram_bot.impl;
 
-import gov.miloverada.telegram_bot.controllers.exceptions.CallBackControllerException;
-import gov.miloverada.telegram_bot.controllers.exceptions.CommandControllerException;
-import gov.miloverada.telegram_bot.controllers.exceptions.UtilMethodExecutionException;
-import gov.miloverada.telegram_bot.exceptions.*;
+import gov.miloverada.telegram_bot.controllers.exceptions.*;
 import gov.miloverada.telegram_bot.interfaces.MethodExecutor;
 import gov.miloverada.telegram_bot.util.annotations.CallBack;
 import gov.miloverada.telegram_bot.util.annotations.Command;
@@ -148,7 +145,8 @@ public class MethodExecutorImpl implements MethodExecutor {
 
             Method method = callBacks.get(methodName);
             if (method != null) {
-                Object methodOwner = context.getBean(parseClassNameFromClassToString(method));
+                String className = uncapitalize(parseClassNameFromClassToString(method));
+                Object methodOwner = context.getBean(className);
 
                 Object[] params = splittedData[1].split("_");
                 method.invoke(methodOwner, params);

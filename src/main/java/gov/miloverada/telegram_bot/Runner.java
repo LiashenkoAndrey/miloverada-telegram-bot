@@ -21,7 +21,7 @@ public class Runner {
 
     @Bean
     private ExecutorService executorService() {
-        return Executors.newFixedThreadPool(1);
+        return Executors.newFixedThreadPool(10);
     }
 
     private static final Logger logger = LogManager.getLogger(Bot.class);

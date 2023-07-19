@@ -1,4 +1,6 @@
-package gov.miloverada.telegram_bot.exceptions;
+package gov.miloverada.telegram_bot.controllers.exceptions;
+
+import gov.miloverada.telegram_bot.exceptions.UpdateProcessingException;
 
 public class MethodExecutionException extends UpdateProcessingException {
 

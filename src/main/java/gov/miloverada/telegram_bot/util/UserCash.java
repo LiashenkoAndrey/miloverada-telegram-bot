@@ -1,6 +1,6 @@
 package gov.miloverada.telegram_bot.util;
 
-import gov.miloverada.telegram_bot.domain.UserDto;
+import gov.miloverada.telegram_bot.domain.Record;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,16 +17,19 @@ import java.util.List;
 @Getter
 public class UserCash {
 
-    private UserDto user = new UserDto();
+    private Record record = new Record();
 
     /**
      * If this field is not null it will execute method with name decided in this field
      */
     private String currentMethod;
 
-    private Integer lastMessageId;
+    private Integer lastBotMessageId;
 
     private List<Integer> lastUserMessages = new ArrayList<>();
+
+    private List<Integer> lastBotMessages = new ArrayList<>();
+
 
     public boolean hasCurrentMethod() {
         return currentMethod != null;
@@ -34,5 +37,13 @@ public class UserCash {
 
     public void addLastUserMessage(Message message) {
         lastUserMessages.add(message.getMessageId());
+    }
+
+    public void setLastMessage(Message message) {
+        this.lastBotMessageId = message.getMessageId();
+    }
+
+    public void addLastBotMessage(Message message) {
+        this.lastBotMessages.add(message.getMessageId());
     }
 }

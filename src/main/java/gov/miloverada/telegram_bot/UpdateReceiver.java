@@ -1,6 +1,6 @@
 package gov.miloverada.telegram_bot;
 
-import gov.miloverada.telegram_bot.exceptions.MethodExecutionException;
+import gov.miloverada.telegram_bot.controllers.exceptions.MethodExecutionException;
 import gov.miloverada.telegram_bot.exceptions.UpdateProcessingException;
 import gov.miloverada.telegram_bot.interfaces.MethodExecutor;
 import gov.miloverada.telegram_bot.util.UserCash;
