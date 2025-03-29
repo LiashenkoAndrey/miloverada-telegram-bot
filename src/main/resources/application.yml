@@ -1,0 +1,11 @@
+telegram:
+  bot:
+    token: 6381306175:AAHj5EIKCDZjraoz2rjnFBaqxDa4UUrr9No
+
+server:
+  port: 8080
+
+api:
+  server:
+#    send-application-endpoint: https://api.miloverada.gov.ua/api/application
+    send-application-endpoint: http://localhost:6060/api/application
