@@ -5,7 +5,14 @@ telegram:
 server:
   port: 8080
 
+  ssl:
+    enabled: ${ssl.enabled}
+    key-store: ${ssl.key.storage_path}
+    key-store-password: ${ssl.key.password}
+    key-store-type: PKCS12
+    key-alias: tomcat
+
 api:
   server:
-#    send-application-endpoint: https://api.miloverada.gov.ua/api/application
-    send-application-endpoint: http://localhost:6060/api/application
+    send-application-endpoint: https://api.miloverada.gov.ua/api/application
+#    send-application-endpoint: http://localhost:6060/api/application
